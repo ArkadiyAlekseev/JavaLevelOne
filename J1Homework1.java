@@ -12,24 +12,10 @@ public class J1Homework1 {
      * где a, b, c, d – целочисленные входные параметры этого метода.
      */
     private static double homeworkOne(int a, int b, int c, int d) {
-        //double может включать в себя целочисленные значения (можно было оставить его),
-        //но я нашел в интернете информацию о приведении типов в java.
-        // Выходит типы примитивных переменных можно приводить(менять).
-        double A;//Ввел параметры с плавающей точкой.
-        double B;
-        double C;
-        double D;
-        A = (double) a;//Сделал из целочисленного параметра параметр с плавающей точкой.
-        B = (double) b;
-        C = (double) c;
-        D = (double) d;
-        double expression = A * (B + (C / D));
-        //вычисление выражения с плавающей точкой.
-        // Int a, int b, int c и int d приводят к тому, чтовыражение даже под оператором double
-        // ведет себя как Int и округляет результат, потому и нужно приведение типа.
-        return expression;
-        //Метод возращает результат с плавающей точкой для дальнейших операций,
-        // но не отображает на консоли (это не было требованием домащнего задания),
+        return  a*(b+(double) c/d);//один раз использовалось приведение типа при делении
+        //достаточно привести c или d, чтобы получить результат с плавающей точкой
+        // арифмитические операции с переменными наследуют приведенный тип метода
+        // метод не отображает на консоли (это не было требованием домащнего задания),
         // проверку ЗАДАНИЯ 1 произвел через метод main).
     }
 
@@ -40,14 +26,8 @@ public class J1Homework1 {
      * если да – вернуть true, в противном случае – false.
      */
     private static boolean homeworkTwo(int a2, int b2) {
-        int c2 = a2 + b2;
-        boolean less = (c2 >= 10);
-        boolean more = (c2 <= 20);
-        if (less && more) {
-            return true;
-        } else {
-            return false;
-        }
+        return ((a2+b2)>=10 && (a2+b2)<=20);
+        // в boolean методе можно сразу возращать результат без if else (true/false)
         //Отображение в консоли не было частью домашнего задания,
         //Проверку ЗАДАНИЯ 2 произвел через метод main
     }
@@ -60,11 +40,8 @@ public class J1Homework1 {
      * Результат работы метода вывести в консоль.
      */
     private static boolean homeworkThree(int a3) {
-        if (a3 >= 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return (a3 >= 0); // if (a3 >= 0) {
+        // в boolean методе можно сразу возращать результат без if else (true/false)
         // Продолжение ЗАДАНИЯ 3 в методе main ниже (вывод в консоль).
     }
 
@@ -76,6 +53,7 @@ public class J1Homework1 {
      */
     private static String homeworkFour(String name) {
         return " Привет, " + name + "!";
+        // В String методе можно использовать строку как параметр ввода
         // Продолжение ЗАДАНИЯ 4 в методе main ниже (вывод в консоль).
     }
 
@@ -87,29 +65,23 @@ public class J1Homework1 {
      * Для проверки работы вывести результаты работы метода в консоль
      */
     private static boolean homeworkFive(int year) {
-        boolean fourYear = (year % 4 == 0);
-        boolean HundredYear = (year % 100 != 0);
-        boolean fourHundredYear = (year % 400 == 0);
-        if (fourHundredYear || fourYear && HundredYear) {
-            return true;
-        } else {
-            return false;
-        }
-        // Продолжение ЗАДАНИЯ 5 в методе main ниже (вывод в консоль).
+        return ((year % 400 == 0) || (year % 4 == 0) && (year % 100 != 0));
+        //в boolean методе можно сразу возращать результат без if else (true/false)
+        // Продолжение ЗАДАНИЯ 5 в методе main ниже (вывод в консоль).*/
     }
 
     public static void main(String[] args) {
 
         //ПРОВЕРКА ЗАДАНИЯ 1 через вывод в консоль (не часть домашнего задания, делал для себя).
         double resultOne = homeworkOne(11, 12, 13, 14);
-        System.out.println("ЗАДАНИЕ 1: \n a * (b + (c / d))= " + resultOne);
+        System.out.println("ЗАДАНИЕ 1: \n a * (b + c / d)= " + resultOne);
 
         // ПРОВЕРКА ЗАДАНИЯ 2 через вывод в консоль (не часть домашнего задания, делал для себя).
-        boolean resultTwo = homeworkTwo(5, 5);
+        boolean resultTwo = homeworkTwo(4, 5);
         System.out.println("ЗАДАНИЕ 2: \n 10 <= (a2 + b2)>=20 : " + resultTwo);
 
         // ЗАДАНИЕ 3 (ПРОДОЛЖЕНИЕ) выводим в консоль результат работы метода.
-        boolean resultThree = homeworkThree(5);
+        boolean resultThree = homeworkThree(-5);
         System.out.println("ЗАДАНИЕ 3: \n указанное число положительное  : " + resultThree);
 
         // ЗАДАНИЕ 4 (ПРОДОЛЖЕНИЕ) вывод приветствия в консоль.
